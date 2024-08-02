@@ -1,3 +1,4 @@
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from apps.client.forms import ClientForm
@@ -21,10 +22,11 @@ class ClientDetailView(DetailView):
 class ClientCreateView(CreateView):
     model = Client
     model_form = ClientForm
+    fields = '__all__'
     extra_context = {
         "title": "Добавление клиента"
     }
-    template_name = 'client/client_form.html'
+    success_url = reverse_lazy('clients:clients_list')
 
 
 class ClientUpdateView(UpdateView):
