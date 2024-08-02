@@ -1,6 +1,6 @@
 from django.db import models
 
-from main.utils import NULLABLE
+from apps.main.utils import NULLABLE
 
 
 class Client(models.Model):

@@ -1,7 +1,7 @@
 from django.urls import path
 
-from main.views import IndexView
-from main.apps import MainConfig
+from apps.main.apps import MainConfig
+from apps.main.views import IndexView
 
 app_name = MainConfig.name
 urlpatterns = [
