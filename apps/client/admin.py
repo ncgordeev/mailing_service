@@ -7,8 +7,8 @@ from apps.client.models import Client
 class ClientAdmin(admin.ModelAdmin):
     list_display = (
         "id",
-        "firstname",
-        "lastname",
+        "first_name",
+        "last_name",
         "surname",
         "email",
     )

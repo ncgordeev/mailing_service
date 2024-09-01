@@ -26,14 +26,16 @@ class MessageListView(LoginRequiredMixin, ListView):
         return queryset
 
 
-class MessageCreateView(LoginRequiredMixin, CreateView):
-    """Контроллер создания сообщения"""
+class MessageDetailView(LoginRequiredMixin, AccessCheckMixin, DetailView):
+    """Контроллер просмотра одного сообщения"""
 
     model = Message
     extra_context = {"title": "Информация о сообщении"}
 
 
 class MessageCreateView(CreateView):
+    """Контроллер создания сообщения"""
+
     model = Message
     form_class = MessageForm
     extra_context = {"title": "Создание сообщения"}
