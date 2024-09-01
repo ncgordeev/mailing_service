@@ -7,7 +7,7 @@ from apps.main.utils import StyleFormMixin
 class ClientForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Client
-        exclude = ("comment",)
+        exclude = ('owner',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

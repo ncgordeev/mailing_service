@@ -15,8 +15,12 @@
                         <td>{{ object.user }}</td>
                     </tr>
                     <tr>
-                        <td>Дата начала</td>
+                        <td>Дата создания</td>
                         <td>{{ object.data_mailing }}</td>
+                    </tr>
+                    <tr>
+                        <td>Следующая отправка</td>
+                        <td>{{ object.sent_time }}</td>
                     </tr>
                     <tr>
                         <td>Дата завершения</td>
@@ -28,7 +32,12 @@
                     </tr>
                     <tr>
                         <td>Получатели</td>
-                        <td>{{ object.client_mailing }}</td>
+                        <td>
+                            {% for client in object.client_mailing.all %}
+                            {{ client.firstname }} {{ client.lastname|slice:1 }}. {{ client.surname|slice:1 }}.
+                            {% if not forloop.last %}|{% endif%}
+                            {% endfor %}
+                        </td>
                     </tr>
                     <tr>
                         <td>Статус</td>
@@ -44,6 +53,8 @@
                 <a href="{% url 'mailings:mailing_update' object.pk %}" class="btn btn-outline-info btn-block">Редактировать</a>
                 <a href="{% url 'mailings:mailing_delete' object.pk %}"
                    class="btn btn-outline-danger btn-block">Удалить</a>
+                <a href="{% url 'mailings:log_list' object.pk %}"
+                   class="btn btn-outline-warning btn-block">Посмотреть логи</a>
             </div>
         </div>
     </div>

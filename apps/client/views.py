@@ -15,6 +15,11 @@ class ClientListView(ListView):
     model = Client
     extra_context = {"title": "Клиенты сервиса"}
 
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        queryset = queryset.filter(owner=self.request.user)
+        return queryset
+
 
 class ClientDetailView(DetailView):
     model = Client
@@ -26,6 +31,12 @@ class ClientCreateView(CreateView):
     form_class = ClientForm
     extra_context = {"title": "Добавление клиента"}
     success_url = reverse_lazy("clients:client_list")
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.owner = self.request.user
+        self.object.save()
+        return super().form_valid(form)
 
 
 class ClientUpdateView(UpdateView):

@@ -6,7 +6,7 @@ from apps.message.models import Message
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
-        fields = "__all__"
+        exclude = ('owner',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

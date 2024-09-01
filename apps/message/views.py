@@ -14,6 +14,11 @@ class MessageListView(ListView):
     model = Message
     extra_context = {"title": "Сообщения"}
 
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        queryset = queryset.filter(owner=self.request.user)
+        return queryset
+
 
 class MessageDetailView(DetailView):
     model = Message
@@ -25,6 +30,12 @@ class MessageCreateView(CreateView):
     form_class = MessageForm
     extra_context = {"title": "Создание сообщения"}
     success_url = reverse_lazy("messages:message_list")
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.owner = self.request.user
+        self.object.save()
+        return super().form_valid(form)
 
 
 class MessageUpdateView(UpdateView):
