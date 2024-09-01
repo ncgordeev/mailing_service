@@ -11,16 +11,21 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Блог</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'clients:client_list' %}">Клиенты</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'mailings:mailing_list' %}">Рассылки</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{% url 'messages:message_list' %}">Сообщения</a>
                 </li>
-                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'mailings:mailing_list' %}">Рассылки</a>
+                </li>
+                {% if perms.users.view_all_users %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:user_list' %}">Пользователи</a>
+                </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'users:profile' %}">Профиль</a>
                 </li>

@@ -7,10 +7,10 @@ from config.settings import EMAIL_HOST_USER
 
 def change_mailing_status(mailing):
     dict_periodicity = {
-        'Один раз': 0,
-        'Ежедневно': 1,
-        'Еженедельно': 7,
-        'Ежемесячно': 30
+        "Один раз": 0,
+        "Ежедневно": 1,
+        "Еженедельно": 7,
+        "Ежемесячно": 30,
     }
     periodicity = dict_periodicity[mailing.periodicity]
     if periodicity == 0:
@@ -27,8 +27,10 @@ def change_mailing_status(mailing):
 
 def run_mailing():
     now = datetime.now(timezone.utc)
-    mailing_list = Mailing.objects.filter(sent_time__lte=now, status__in=[Mailing.StatusOfMailing.CREATED,
-                                                                          Mailing.StatusOfMailing.LAUNCHED])
+    mailing_list = Mailing.objects.filter(
+        sent_time__lte=now,
+        status__in=[Mailing.StatusOfMailing.CREATED, Mailing.StatusOfMailing.LAUNCHED],
+    )
     for mailing in mailing_list:
         title = mailing.message.letter_subject
         message = mailing.message.letter_body
@@ -41,7 +43,7 @@ def run_mailing():
                     message=message,
                     from_email=EMAIL_HOST_USER,
                     recipient_list=[client.email],
-                    fail_silently=False
+                    fail_silently=False,
                 )
                 status = Logs.StatusOfLogs.SUCCESS
             except smtplib.SMTPResponseException as error:

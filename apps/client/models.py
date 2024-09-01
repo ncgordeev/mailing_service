@@ -12,7 +12,12 @@ class Client(models.Model):
     surname = models.CharField(max_length=50, verbose_name="Отчество", **NULLABLE)
     email = models.EmailField(max_length=150, verbose_name="Электронная почта")
     comment = models.TextField(verbose_name="Комментарий", **NULLABLE)
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Создатель', **NULLABLE)
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Создатель",
+        **NULLABLE,
+    )
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} {self.surname}"

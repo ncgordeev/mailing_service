@@ -7,16 +7,10 @@ from apps.client.models import Client
 class ClientAdmin(admin.ModelAdmin):
     list_display = (
         "id",
-        "first_name",
-        "last_name",
+        "firstname",
+        "lastname",
+        "surname",
         "email",
     )
-    search_fields = (
-        "first_name",
-        "email",
-    )
-    list_filter = (
-        "id",
-        "first_name",
-        "email",
-    )
+    list_filter = ("owner",)
+    search_fields = ("email",)

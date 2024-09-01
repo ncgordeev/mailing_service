@@ -23,30 +23,43 @@ class Mailing(models.Model):
         FINISHED = "Завершена", _("Завершена")
 
     name = models.CharField(max_length=50, verbose_name="Название")
-    data_mailing = models.DateTimeField(default=timezone.now, verbose_name='Дата создания')
-    sent_time = models.DateTimeField(default=timezone.now, verbose_name='Дата отправки')
-    data_mailing_finish = models.DateTimeField(default=timezone.now() + timedelta(days=365),
-                                               verbose_name='Дата завершения')
-    periodicity = models.CharField(default=PeriodicityOfMailing.ONCE_TIME, choices=PeriodicityOfMailing,
-                                   verbose_name='Периодичность')
-    client_mailing = models.ManyToManyField(Client, verbose_name='Получатели')
-    user = models.ForeignKey(
+    data_mailing = models.DateTimeField(
+        default=timezone.now, verbose_name="Дата создания"
+    )
+    sent_time = models.DateTimeField(default=timezone.now, verbose_name="Дата отправки")
+    data_mailing_finish = models.DateTimeField(
+        default=timezone.now() + timedelta(days=365), verbose_name="Дата завершения"
+    )
+    periodicity = models.CharField(
+        default=PeriodicityOfMailing.ONCE_TIME,
+        choices=PeriodicityOfMailing,
+        verbose_name="Периодичность",
+    )
+    client_mailing = models.ManyToManyField(Client, verbose_name="Получатели")
+    owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         verbose_name="Создатель",
         **NULLABLE,
     )
-    status = models.CharField(default=StatusOfMailing.CREATED, choices=StatusOfMailing, verbose_name='Статус')
+    status = models.CharField(
+        default=StatusOfMailing.CREATED, choices=StatusOfMailing, verbose_name="Статус"
+    )
     message = models.ForeignKey(
         Message, on_delete=models.CASCADE, verbose_name="Сообщение", default=None
     )
 
     def __str__(self):
-        return f'{self.name}'
+        return f"{self.name}"
 
     class Meta:
         verbose_name = "Рассылка"
         verbose_name_plural = "Рассылки"
+
+    permissions = [
+        ("set_deactivate", "Can deactivate mailing"),
+        ("view_all_mailing", "Can view all mailing"),
+    ]
 
 
 class Logs(models.Model):
@@ -56,14 +69,16 @@ class Logs(models.Model):
         SUCCESS = "Успешно", _("Успешно")
         FAILED = "Безуспешно", _("Безуспешно")
 
-    mailing = models.ForeignKey(Mailing, on_delete=models.CASCADE, verbose_name='Рассылка')
-    datatime = models.DateTimeField(verbose_name='Дата и время попытки')
-    status = models.CharField(choices=StatusOfLogs, verbose_name='Статус')
-    answer_mail_server = models.TextField(verbose_name='Ответ почтового сервера')
+    mailing = models.ForeignKey(
+        Mailing, on_delete=models.CASCADE, verbose_name="Рассылка"
+    )
+    datatime = models.DateTimeField(verbose_name="Дата и время попытки")
+    status = models.CharField(choices=StatusOfLogs, verbose_name="Статус")
+    answer_mail_server = models.TextField(verbose_name="Ответ почтового сервера")
 
     def __str__(self):
         return f"{self.datatime} | {self.mailing} | {self.status} | {self.answer_mail_server}"
 
     class Meta:
-        verbose_name = 'Попытка'
-        verbose_name_plural = 'Попытки'
+        verbose_name = "Попытка"
+        verbose_name_plural = "Попытки"

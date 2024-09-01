@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
 from django.views.generic import (
     ListView,
@@ -9,24 +10,33 @@ from django.views.generic import (
 
 from apps.client.forms import ClientForm
 from apps.client.models import Client
+from apps.main.utils import AccessCheckMixin
 
 
 class ClientListView(ListView):
+    """Контроллер просмотра списка клиентов"""
+
     model = Client
     extra_context = {"title": "Клиенты сервиса"}
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
-        queryset = queryset.filter(owner=self.request.user)
+        user = self.request.user
+        if not user.is_superuser:
+            queryset = queryset.filter(owner=user)
         return queryset
 
 
-class ClientDetailView(DetailView):
+class ClientDetailView(LoginRequiredMixin, AccessCheckMixin, DetailView):
+    """Контроллер просмотра одного клиента"""
+
     model = Client
     extra_context = {"title": "Информация о клиенте"}
 
 
-class ClientCreateView(CreateView):
+class ClientCreateView(LoginRequiredMixin, CreateView):
+    """Контроллер создания клиента"""
+
     model = Client
     form_class = ClientForm
     extra_context = {"title": "Добавление клиента"}
@@ -39,7 +49,9 @@ class ClientCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ClientUpdateView(UpdateView):
+class ClientUpdateView(LoginRequiredMixin, AccessCheckMixin, UpdateView):
+    """Контроллер редактирования клиента"""
+
     model = Client
     form_class = ClientForm
     extra_context = {"title": "Редактирование клиента"}
@@ -48,7 +60,9 @@ class ClientUpdateView(UpdateView):
         return reverse("clients:client_detail", args=[self.kwargs.get("pk")])
 
 
-class ClientDeleteView(DeleteView):
+class ClientDeleteView(LoginRequiredMixin, AccessCheckMixin, DeleteView):
+    """Контроллер удаления клиента"""
+
     model = Client
     extra_context = {"title": "Удаление клиента"}
     success_url = reverse_lazy("clients:client_list")

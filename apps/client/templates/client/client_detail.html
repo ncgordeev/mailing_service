@@ -15,7 +15,7 @@
                         <td>{{ object.lastname }}</td>
                     </tr>
                     <tr>
-                        <td>Отчесво</td>
+                        <td>Отчество</td>
                         <td>{{ object.surname }}</td>
                     </tr>
                     <tr>
@@ -28,11 +28,13 @@
                     </tr>
                 </table>
             </div>
+            {% if user == object.owner or user.is_superuser %}
             <div class="card-footer">
                 <a href="{% url 'clients:client_update' object.pk %}" class="btn btn-outline-info btn-block">Редактировать</a>
                 <a href="{% url 'clients:client_delete' object.pk %}"
                    class="btn btn-outline-danger btn-block">Удалить</a>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

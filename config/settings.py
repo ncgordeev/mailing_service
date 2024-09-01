@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_crontab",
+    "apps.crontab",
     "apps.main",
     "apps.client",
     "apps.users",
@@ -153,3 +155,5 @@ EMAIL_ADMIN = EMAIL_HOST_USER
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 LOGIN_URL = "/users/login/"
+
+CRONJOBS = [("*/1 * * * *", "apps.crontab.cron.scheduled_mailing")]
