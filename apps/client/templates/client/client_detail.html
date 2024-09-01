@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h2 class="text-center mb-3">{{ title }}</h2>
+<div class="row justify-content-center">
+    <div class="col-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td>Имя</td>
+                        <td>{{ object.firstname }}</td>
+                    </tr>
+                    <tr>
+                        <td>Фамилия</td>
+                        <td>{{ object.lastname }}</td>
+                    </tr>
+                    <tr>
+                        <td>Отчесво</td>
+                        <td>{{ object.surname }}</td>
+                    </tr>
+                    <tr>
+                        <td>Почта</td>
+                        <td>{{ object.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Комментарий</td>
+                        <td>{{ object.comment }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'clients:client_update' object.pk %}" class="btn btn-outline-info btn-block">Редактировать</a>
+                <a href="{% url 'clients:client_delete' object.pk %}"
+                   class="btn btn-outline-danger btn-block">Удалить</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-xl navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'main:home' %}">
+            Mailing<span>service</span>
+        </a>
+        <div class="collapse navbar-collapse show" id="navbarBasic">
+            <ul class="navbar-nav ms-auto gap-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:home' %}">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Блог</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'clients:client_list' %}">Клиенты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'mailings:mailing_list' %}">Рассылки</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'messages:message_list' %}">Сообщения</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:profile' %}">Профиль</a>
+                </li>
+                <form action="{% url 'users:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="mt-2 btn btn-danger">Выйти</button>
+                </form>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link btn-default" href="{% url 'users:login' %}">Войти | Регистрация</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

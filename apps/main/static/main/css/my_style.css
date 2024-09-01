@@ -1,0 +1,161 @@
+body {
+    background-image: url('../img/background-image.jpg');
+    background-size: cover; /* Растягивает картинку на всю область фона */
+    background-position: center; /* Выравнивает картинку по центру */
+    background-attachment: fixed; /* Фиксирует картинку на месте, когда страница прокручивается */
+}
+
+.navbar-custom {
+    background: #344659;
+    padding: 10px 0
+}
+
+.navbar-custom .navbar-brand {
+    color: #fff;
+    font-weight: 800;
+    font-size: 30px
+}
+
+.navbar-custom .navbar-brand:hover {
+    color: #fff
+}
+
+.navbar-custom .navbar-brand span {
+    font-weight: 300;
+    color: #00b2ce
+}
+
+.navbar-custom .navbar-brand span:hover {
+    color: #00b2ce
+}
+
+.navbar-custom .navbar-brand:focus {
+    outline: 0
+}
+
+.navbar-custom a {
+    color: #98acc0;
+    background-color: transparent
+}
+
+.navbar-custom a:hover {
+    color: #00b2ce
+}
+
+.navbar-custom .navbar-nav li a {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+    border: 1px solid #344659;
+    line-height: 28px;
+    border-radius: 24px;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    padding: 10px 25px
+}
+
+.navbar-custom .navbar-nav li a:focus,
+.navbar-custom .navbar-nav li a:hover {
+    outline: 0;
+    color: #00b2ce;
+    border-color: #00b2ce;
+    background-color: transparent
+}
+
+.navbar-custom .navbar-nav li a.btn-default {
+    background-color: #00b2ce;
+    line-height: 50px;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 40px;
+    margin: 0 10px;
+    box-shadow: inset 0 -9px - 0 rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: inset 0 -9px 0 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset 0 -9px 0 0 rgba(0, 0, 0, 0.15);
+    -o-box-shadow: inset 0 -9px 0 0 rgba(0, 0, 0, 0.15)
+}
+
+.navbar-custom .navbar-nav li a.btn-default:active,
+.navbar-custom .navbar-nav li a.btn-default:focus,
+.navbar-custom .navbar-nav li a.btn-default:hover {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none
+}
+
+.navbar-custom .navbar-nav li.dropdown ul.dropdown-menu {
+    background-color: #293949;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    left: 0;
+    right: auto;
+    top: 132%
+}
+
+.navbar-custom .navbar-nav li.dropdown ul.dropdown-menu li {
+    border-bottom: 1px solid #394b5f
+}
+
+.navbar-custom .navbar-nav li.dropdown ul.dropdown-menu li a {
+    line-height: 30px;
+    border: none;
+    color: #98acc0;
+    font-size: 13px
+}
+
+.navbar-custom .navbar-nav li.dropdown ul.dropdown-menu li a:focus,
+.navbar-custom .navbar-nav li.dropdown ul.dropdown-menu li a:hover {
+    color: #fff;
+    border: none;
+    outline: 0;
+    background-color: transparent
+}
+
+.navbar-custom .navbar-nav li.dropdown ul.dropdown-menu li:last-child {
+    border: none
+}
+
+.navbar-custom .navbar-nav li.open a {
+    background-color: transparent
+}
+
+.navbar-custom .navbar-nav li.open a:focus,
+.navbar-custom .navbar-nav li.open a:hover {
+    outline: 0;
+    background-color: transparent
+}
+
+#page-content {
+    margin-top: 20px
+}
+
+#page-content h2 {
+    font-weight: 300;
+    font-size: 30px;
+    color: #304254
+}
+
+
+.intro p {
+    margin-top: 15px;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 300
+}
+
+.article_title {
+    font-family: 'Monotype Corsiva';
+    font-size: 25px;
+    }
+
+.transparent-form {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
