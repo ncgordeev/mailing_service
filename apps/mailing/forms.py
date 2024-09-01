@@ -1,13 +1,12 @@
 from django import forms
 
-from apps.client.models import Client
-from apps.main.utils import StyleFormMixin
+from apps.mailing.models import Mailing
 
 
-class ClientForm(StyleFormMixin, forms.ModelForm):
+class MailingForm(forms.ModelForm):
     class Meta:
-        model = Client
-        exclude = ("comment",)
+        model = Mailing
+        fields = "__all__"
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

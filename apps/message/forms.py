@@ -7,4 +7,4 @@ from apps.message.models import Message
 class MessageForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Message
-        exclude = ('owner',)
+        exclude = ("owner",)

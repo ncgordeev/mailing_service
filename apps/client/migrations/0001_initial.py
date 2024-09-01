@@ -7,23 +7,41 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Client',
+            name="Client",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=50, verbose_name='Имя')),
-                ('last_name', models.CharField(max_length=50, verbose_name='Фамилия')),
-                ('surname', models.CharField(blank=True, max_length=50, null=True, verbose_name='Отчество')),
-                ('email', models.EmailField(max_length=150, verbose_name='Электронная почта')),
-                ('comment', models.TextField(blank=True, null=True, verbose_name='Комментарий')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(max_length=50, verbose_name="Имя")),
+                ("last_name", models.CharField(max_length=50, verbose_name="Фамилия")),
+                (
+                    "surname",
+                    models.CharField(
+                        blank=True, max_length=50, null=True, verbose_name="Отчество"
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(max_length=150, verbose_name="Электронная почта"),
+                ),
+                (
+                    "comment",
+                    models.TextField(blank=True, null=True, verbose_name="Комментарий"),
+                ),
             ],
             options={
-                'verbose_name': 'Клиент',
-                'verbose_name_plural': 'Клиенты',
+                "verbose_name": "Клиент",
+                "verbose_name_plural": "Клиенты",
             },
         ),
     ]

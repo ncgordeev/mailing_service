@@ -1,0 +1,51 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h2 class="text-center mb-3">{{ title }}</h2>
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td>Название</td>
+                        <td>{{ object.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Создатель</td>
+                        <td>{{ object.user }}</td>
+                    </tr>
+                    <tr>
+                        <td>Дата начала</td>
+                        <td>{{ object.data_mailing }}</td>
+                    </tr>
+                    <tr>
+                        <td>Дата завершения</td>
+                        <td>{{ object.data_mailing_finish }}</td>
+                    </tr>
+                    <tr>
+                        <td>Периодичность</td>
+                        <td>{{ object.periodicity }}</td>
+                    </tr>
+                    <tr>
+                        <td>Получатели</td>
+                        <td>{{ object.client_mailing }}</td>
+                    </tr>
+                    <tr>
+                        <td>Статус</td>
+                        <td>{{ object.status }}</td>
+                    </tr>
+                    <tr>
+                        <td>Сообщение</td>
+                        <td>{{ object.message }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'mailings:mailing_update' object.pk %}" class="btn btn-outline-info btn-block">Редактировать</a>
+                <a href="{% url 'mailings:mailing_delete' object.pk %}"
+                   class="btn btn-outline-danger btn-block">Удалить</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
