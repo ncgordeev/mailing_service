@@ -35,6 +35,7 @@ class Mailing(models.Model):
     status = models.CharField(
         max_length=9, choices=STATUS_MAILING, verbose_name="Статус"
     )
+    message = models.ForeignKey(Message, on_delete=models.CASCADE, verbose_name='Сообщение', default=None)
 
     def __str__(self):
         return f"Рассылка: {self.name}"

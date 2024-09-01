@@ -6,12 +6,11 @@
         <div class="card-body">
             <form method="POST">
                 {% csrf_token %}
-                <p>Вы действительно хотите удалить рассылку: <i>{{ object.name }}.</i></p>
+                <p>Вы действительно хотите удалить сообщение: <i>{{ object.letter_subject }}.</i></p>
                 <button type="submit" class="btn btn-danger">Подтвердить</button>
-                <a href="{% url 'mailings:mailing_detail' object.pk %}" class="btn btn-warning">Отменить</a>
+                <a href="{% url 'messages:message_detail' object.pk %}" class="btn btn-warning">Отменить</a>
             </form>
         </div>
     </div>
 </div>
-
 {% endblock %}
