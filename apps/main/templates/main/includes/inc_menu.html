@@ -20,9 +20,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'messages:message_list' %}">Сообщения</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link btn-default" href="#">Войти | Регистрация</a>
+                    <a class="nav-link" href="{% url 'users:profile' %}">Профиль</a>
                 </li>
+                <form action="{% url 'users:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="mt-2 btn btn-danger">Выйти</button>
+                </form>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link btn-default" href="{% url 'users:login' %}">Войти | Регистрация</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>

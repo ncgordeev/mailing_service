@@ -27,6 +27,12 @@ class MailingCreateView(CreateView):
     extra_context = {"title": "Создание рассылки"}
     success_url = reverse_lazy("mailings:mailing_list")
 
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
 
 class MailingUpdateView(UpdateView):
     model = Mailing

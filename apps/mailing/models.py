@@ -30,12 +30,17 @@ class Mailing(models.Model):
     )
     client_mailing = models.ManyToManyField(Client, verbose_name="Получатель")
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Создатель"
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Создатель",
+        **NULLABLE,
     )
     status = models.CharField(
         max_length=9, choices=STATUS_MAILING, verbose_name="Статус"
     )
-    message = models.ForeignKey(Message, on_delete=models.CASCADE, verbose_name='Сообщение', default=None)
+    message = models.ForeignKey(
+        Message, on_delete=models.CASCADE, verbose_name="Сообщение", default=None
+    )
 
     def __str__(self):
         return f"Рассылка: {self.name}"
