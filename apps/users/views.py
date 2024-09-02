@@ -45,7 +45,7 @@ class UserRegisterView(CreateView):
             send_mail(
                 subject="Верификация почты на сайте MailingService",
                 message=f"Доброго времени суток! "
-                f"Для подтверждения регистрации на сайте MailingService перейдите по ссылки {url}",
+                        f"Для подтверждения регистрации на сайте MailingService перейдите по ссылки {url}",
                 from_email=EMAIL_HOST_USER,
                 recipient_list=[user.email],
             )
@@ -91,10 +91,10 @@ class UserPasswordResetView(PasswordResetView):
                     send_mail(
                         subject="Восстановление пароля на сайте MailingService",
                         message=f"Доброго времени суток! "
-                        f"Ваш пароль для доступа на сайт MailingService изменен:\n"
-                        f"Данные для входа:\n"
-                        f"Email: {user_email}\n"
-                        f"Пароль: {password}",
+                                f"Ваш пароль для доступа на сайт MailingService изменен:\n"
+                                f"Данные для входа:\n"
+                                f"Email: {user_email}\n"
+                                f"Пароль: {password}",
                         from_email=EMAIL_HOST_USER,
                         recipient_list=[user.email],
                     )
@@ -114,12 +114,11 @@ class UserListView(PermissionRequiredMixin, ListView):
     extra_context = {"title": "Список пользователей"}
 
     def get_queryset(self, *args, **kwargs):
-        return (
-            super()
-            .get_queryset(*args, **kwargs)
-            .exclude(pk=self.request.user.pk)
-            .exclude(is_superuser=True)
-        )
+        user = self.request.user
+        if user.is_superuser:
+            return super().get_queryset(*args, **kwargs).exclude(pk=self.request.user.pk).exclude(is_superuser=True)
+        return super().get_queryset(*args, **kwargs).exclude(pk=self.request.user.pk).exclude(
+            is_superuser=True).exclude(is_staff=True)
 
 
 @permission_required("users.set_user_deactivate")

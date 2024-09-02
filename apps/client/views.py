@@ -48,6 +48,11 @@ class ClientCreateView(LoginRequiredMixin, CreateView):
         self.object.save()
         return super().form_valid(form)
 
+    def get_form_kwargs(self):
+        data = super().get_form_kwargs()
+        data['owner'] = self.request.user
+        return data
+
 
 class ClientUpdateView(LoginRequiredMixin, AccessCheckMixin, UpdateView):
     """Контроллер редактирования клиента"""
@@ -58,6 +63,11 @@ class ClientUpdateView(LoginRequiredMixin, AccessCheckMixin, UpdateView):
 
     def get_success_url(self):
         return reverse("clients:client_detail", args=[self.kwargs.get("pk")])
+
+    def get_form_kwargs(self):
+        data = super().get_form_kwargs()
+        data['owner'] = self.request.user
+        return data
 
 
 class ClientDeleteView(LoginRequiredMixin, AccessCheckMixin, DeleteView):

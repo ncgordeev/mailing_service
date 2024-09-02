@@ -22,10 +22,18 @@
                         <td>Почта</td>
                         <td>{{ object.email }}</td>
                     </tr>
+                    {% if user.is_superuser %}
+                    <tr>
+                      <td>Добавил</td>
+                      <td>{{ object.owner.first_name }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if object.comment %}
                     <tr>
                         <td>Комментарий</td>
                         <td>{{ object.comment }}</td>
                     </tr>
+                    {% endif %}
                 </table>
             </div>
             {% if user == object.owner or user.is_superuser %}

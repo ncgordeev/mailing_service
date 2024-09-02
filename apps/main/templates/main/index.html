@@ -1,17 +1,21 @@
 {% extends 'main/base.html' %}
 {% block content %}
 <div class="row">
-    <section class="col">
+    <section class="col-8">
         <div class="intro">
-            <h2>Добро пожаловать в сервис электронной рассылки!</h2>
+            <h2>Добро пожаловать на сервис электронной рассылки!</h2>
             <p>
-                Наши услуги позволят Вам легко и быстро создать эффективную рассылку для вашей аудитории.
+                Наши услуги позволят вам легко и быстро создать эффективную рассылку для вашей аудитории.
                 Просто загрузите вашу базу клиентов и отправьте персонализированные сообщения всем вашим
-                контактам в несколько простых шагов.<br><br>
+                контактам в несколько простых шагов.
+            </p>
+            <p>
                 ⚙️ Наши возможности:<br>
                 - Загружайте базу клиентов в различных форматах<br>
                 - Создавайте креативные и информативные шаблоны писем<br>
-                - Персонализируйте сообщения для максимальной вовлечённости<br><br>
+                - Персонализируйте сообщения для максимальной вовлечённости
+            </p>
+            <p>
                 Мы ценим безопасность ваших данных и обеспечиваем конфиденциальность персональной информации
                 ваших клиентов.
                 Присоединяйтесь к нам и повысьте эффективность вашей коммуникации с помощью нашего сервиса
@@ -19,5 +23,41 @@
             </p>
         </div>
     </section>
+    <div class="col-4">
+        <h5>Статистика рассылок:</h5>
+        <table class="table table-striped">
+            <tr>
+                <td>Всего рассылок</td>
+                <td>{{ count_mailing }}</td>
+            </tr>
+            <tr>
+                <td>Активных рассылок</td>
+                <td>{{ count_mailing_active }}</td>
+            </tr>
+            <tr>
+                <td>Всего клиентов для рассылок</td>
+                <td>{{ count_client }}</td>
+            </tr>
+            <tr>
+                <td>Уникальных клиентов для рассылок</td>
+                <td>{{ count_client_unique }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="card-group">
+    {% for object in object_list %}
+    <div class="card">
+        <img src="{{ object.image.url }}" class="card-img-top" alt="card-group-image" style="height:200px">
+        <div class="card-body">
+            <h5 class="card-title">{{ object.title|capfirst }}</h5>
+            <p class="card-text">{{ object.content | slice:200 }}...</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+            <a href="{% url 'blog:article_view' object.slug %}" class="btn btn-sm btn-outline-info">Читать</a>
+            <small class="text-muted">Просмотров: {{ object.count_views }}</small>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}

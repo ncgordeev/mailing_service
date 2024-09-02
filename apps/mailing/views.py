@@ -13,6 +13,7 @@ from apps.client.models import Client
 from apps.mailing.forms import MailingForm, ManagerMailingForm
 from apps.mailing.models import Mailing, Logs
 from apps.main.utils import AccessCheckMixin
+from apps.message.models import Message
 
 
 class MailingListView(LoginRequiredMixin, ListView):
@@ -39,9 +40,9 @@ class MailingDetailView(LoginRequiredMixin, DetailView):
         self.object = super().get_object(queryset)
         user = self.request.user
         if (
-            not user.is_superuser
-            and not user.groups.filter(name="manager").exists()
-            and user != self.object.owner
+                not user.is_superuser
+                and not user.groups.filter(name="manager").exists()
+                and user != self.object.owner
         ):
             raise PermissionDenied
         return self.object
@@ -60,6 +61,7 @@ class MailingCreateView(LoginRequiredMixin, CreateView):
         form.fields["client_mailing"].queryset = Client.objects.filter(
             owner=self.request.user
         )
+        form.fields['message'].queryset = Message.objects.filter(owner=self.request.user)
         return form
 
     def form_valid(self, form):
@@ -99,9 +101,9 @@ class MailingUpdateView(LoginRequiredMixin, UpdateView):
         self.object = super().get_object(queryset)
         user = self.request.user
         if (
-            not user.is_superuser
-            and user != self.object.owner
-            and not user.groups.filter(name="manager").exists()
+                not user.is_superuser
+                and user != self.object.owner
+                and not user.groups.filter(name="manager").exists()
         ):
             raise PermissionDenied
         return self.object
@@ -136,10 +138,10 @@ class LogListView(LoginRequiredMixin, ListView):
         mailing_pk = self.kwargs.get("mailing_pk")
         user = self.request.user
         if (
-            not user.is_superuser
-            and not Mailing.objects.filter(
-                pk=mailing_pk, owner=self.request.user
-            ).exists()
+                not user.is_superuser
+                and not Mailing.objects.filter(
+            pk=mailing_pk, owner=self.request.user
+        ).exists()
         ):
             raise PermissionDenied
         return super().dispatch(request, args, **kwargs)
