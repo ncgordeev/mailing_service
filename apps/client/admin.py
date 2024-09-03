@@ -9,14 +9,8 @@ class ClientAdmin(admin.ModelAdmin):
         "id",
         "first_name",
         "last_name",
+        "surname",
         "email",
     )
-    search_fields = (
-        "first_name",
-        "email",
-    )
-    list_filter = (
-        "id",
-        "first_name",
-        "email",
-    )
+    list_filter = ("owner",)
+    search_fields = ("email",)

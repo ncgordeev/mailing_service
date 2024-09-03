@@ -1,14 +1,11 @@
 from django import forms
-
+from apps.main.utils import StyleFormMixin
 from apps.message.models import Message
 
 
-class MessageForm(forms.ModelForm):
+class MessageForm(StyleFormMixin, forms.ModelForm):
+    """Форма создания и редактирования сообщения"""
+
     class Meta:
         model = Message
-        fields = "__all__"
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for fields_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control"
+        exclude = ("owner",)

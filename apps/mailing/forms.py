@@ -1,14 +1,23 @@
 from django import forms
 
 from apps.mailing.models import Mailing
+from apps.main.utils import StyleFormMixin
 
 
-class MailingForm(forms.ModelForm):
+class MailingForm(StyleFormMixin, forms.ModelForm):
+    """Форма создания и редактирования рассылки"""
+
     class Meta:
         model = Mailing
-        exclude = ("user",)
+        exclude = (
+            "data_mailing",
+            "owner",
+        )
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for fields_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control"
+
+class ManagerMailingForm(StyleFormMixin, forms.ModelForm):
+    """Форма редактирования рассылки для менеджера"""
+
+    class Meta:
+        model = Mailing
+        fields = ("status",)

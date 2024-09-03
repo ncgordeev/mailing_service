@@ -8,6 +8,8 @@ from apps.users.views import (
     email_verification,
     UserUpdateView,
     UserPasswordResetView,
+    UserListView,
+    toggle_activiti,
 )
 
 app_name = UsersConfig.name
@@ -19,4 +21,6 @@ urlpatterns = [
     path("confirm-email/<str:token>/", email_verification, name="confirm-email"),
     path("profile/", UserUpdateView.as_view(), name="profile"),
     path("recovery/", UserPasswordResetView.as_view(), name="recovery"),
+    path("", UserListView.as_view(), name="user_list"),
+    path("toggle_activiti/<int:pk>", toggle_activiti, name="toggle_activiti"),
 ]

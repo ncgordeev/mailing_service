@@ -1,0 +1,90 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$45nhGlo0qddCWexOuqKF45$4EF0bay8vhe4Q2e/zqPmRzA/CtQxPcPuGf6XpzYJENg=",
+      "last_login": "2024-05-29T23:09:23.356Z",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-05-29T15:44:53.810Z",
+      "email": "admin@example.com",
+      "first_name": "Admin",
+      "last_name": "Root",
+      "phone": null,
+      "country": null,
+      "avatar": "users/avatars/no_avatar.png",
+      "token": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$b4bY2a9GLRfGP6bVmdhSFR$OEVj977wp5Vn4cyfUGQJMBZj2TbMMIIkDPi6P4mKVBA=",
+      "last_login": "2024-05-29T20:00:39.951Z",
+      "is_superuser": false,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-05-29T15:48:18Z",
+      "email": "manager@example.com",
+      "first_name": "Иван",
+      "last_name": null,
+      "phone": null,
+      "country": null,
+      "avatar": "users/avatars/no_avatar.png",
+      "token": null,
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$5CVjEsBkRKevLpUUXvdXEc$zXjkXq/XsPjptteQK5UVQ/ElMOoOic6FOSVr9739KaI=",
+      "last_login": "2024-05-29T21:48:14.149Z",
+      "is_superuser": false,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-05-29T15:49:52Z",
+      "email": "contentmanager@example.com",
+      "first_name": "Максим",
+      "last_name": null,
+      "phone": null,
+      "country": null,
+      "avatar": "users/avatars/no_avatar.png",
+      "token": null,
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$Hb3W4oyjOWp1gJcahAeSAT$d3mLQCUk615s5KE9RAhiqg2wtbr76HLWQWB8EJdwkag=",
+      "last_login": "2024-05-29T20:00:14.110Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-05-29T15:50:56.873Z",
+      "email": "simpleuser@example.com",
+      "first_name": "Алексей",
+      "last_name": null,
+      "phone": null,
+      "country": null,
+      "avatar": "users/avatars/no_avatar.png",
+      "token": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

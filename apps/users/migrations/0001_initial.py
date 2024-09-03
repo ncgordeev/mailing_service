@@ -84,7 +84,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "avatar",
+                    "avatars",
                     models.ImageField(
                         blank=True,
                         null=True,

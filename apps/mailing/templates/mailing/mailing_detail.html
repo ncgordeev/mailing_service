@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% block content %}
+{% load user_tags %}
 <h2 class="text-center mb-3">{{ title }}</h2>
 <div class="row justify-content-center">
     <div class="col-12">
@@ -12,11 +13,15 @@
                     </tr>
                     <tr>
                         <td>Создатель</td>
-                        <td>{{ object.user }}</td>
+                        <td>{{ object.owner }}</td>
                     </tr>
                     <tr>
-                        <td>Дата начала</td>
+                        <td>Дата создания</td>
                         <td>{{ object.data_mailing }}</td>
+                    </tr>
+                    <tr>
+                        <td>Следующая отправка</td>
+                        <td>{{ object.sent_time }}</td>
                     </tr>
                     <tr>
                         <td>Дата завершения</td>
@@ -28,7 +33,12 @@
                     </tr>
                     <tr>
                         <td>Получатели</td>
-                        <td>{{ object.client_mailing }}</td>
+                        <td>
+                            {% for client in object.client_mailing.all %}
+                            {{ client.firstname }} {{ client.lastname|slice:1 }}. {{ client.surname|slice:1 }}.
+                            {% if not forloop.last %}|{% endif%}
+                            {% endfor %}
+                        </td>
                     </tr>
                     <tr>
                         <td>Статус</td>
@@ -41,9 +51,17 @@
                 </table>
             </div>
             <div class="card-footer">
-                <a href="{% url 'mailings:mailing_update' object.pk %}" class="btn btn-outline-info btn-block">Редактировать</a>
+                {% if user == object.owner or user.is_superuser or user|is_manager %}
+                <a href="{% url 'mailings:mailing_update' object.pk %}" class="btn btn-outline-info btn-block">
+                    Редактировать
+                </a>
+                {% endif %}
+                {% if user == object.owner or user.is_superuser %}
                 <a href="{% url 'mailings:mailing_delete' object.pk %}"
                    class="btn btn-outline-danger btn-block">Удалить</a>
+                <a href="{% url 'mailings:log_list' object.pk %}"
+                   class="btn btn-outline-warning btn-block">Посмотреть логи</a>
+                {% endif %}
             </div>
         </div>
     </div>

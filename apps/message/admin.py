@@ -9,4 +9,5 @@ class MessageAdmin(admin.ModelAdmin):
         "pk",
         "letter_subject",
     )
+    list_filter = ("owner",)
     search_fields = ("letter_subject",)

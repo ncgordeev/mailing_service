@@ -16,11 +16,13 @@
                     </tr>
                 </table>
             </div>
+            {% if user == object.owner or user.is_superuser %}
             <div class="card-footer">
                 <a href="{% url 'messages:message_update' object.pk %}" class="btn btn-outline-info btn-block">Редактировать</a>
                 <a href="{% url 'messages:message_delete' object.pk %}"
                    class="btn btn-outline-danger btn-block">Удалить</a>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>
