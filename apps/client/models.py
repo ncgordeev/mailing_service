@@ -8,16 +8,16 @@ from apps.main.utils import NULLABLE
 class Client(models.Model):
     """Модель клиент сервиса, получает рассылки"""
 
-    first_name = models.CharField(max_length=50, verbose_name="Имя", default=None)
-    last_name = models.CharField(max_length=50, verbose_name="Фамилия", default=None)
+    first_name = models.CharField(max_length=50, verbose_name="Имя")
+    last_name = models.CharField(max_length=50, verbose_name="Фамилия")
     surname = models.CharField(max_length=50, verbose_name="Отчество")
     email = models.EmailField(max_length=256, verbose_name="Почта")
     comment = models.TextField(max_length=450, **NULLABLE, verbose_name="Комментарий")
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        verbose_name="Создатель",
         **NULLABLE,
+        verbose_name="Создатель",
     )
 
     def __str__(self):

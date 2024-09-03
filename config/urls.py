@@ -27,7 +27,7 @@ urlpatterns = [
     path("messages/", include("apps.message.urls", namespace="messages")),
     path("mailings/", include("apps.mailing.urls", namespace="mailings")),
     path("users/", include("apps.users.urls", namespace="users")),
-    path('blog/', include('apps.blog.urls', namespace='blog')),
+    path("blog/", include("apps.blog.urls", namespace="blog")),
 ]
 
 if settings.DEBUG:

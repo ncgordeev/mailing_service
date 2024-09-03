@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name="user",
-            name="avatar",
+            name="avatars",
             field=models.ImageField(
                 blank=True, null=True, upload_to="users/avatars/", verbose_name="Аватар"
             ),

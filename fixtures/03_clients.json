@@ -1,0 +1,230 @@
+[
+  {
+    "model": "client.client",
+    "pk": 1,
+    "fields": {
+      "first_name": "Иван",
+      "last_name": "Иванов",
+      "surname": "Иванович",
+      "email": "ivan_ivanow@example.com",
+      "comment": "",
+      "owner": 2
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 2,
+    "fields": {
+      "first_name": "Максим",
+      "last_name": "Краснов",
+      "surname": "Вадимович",
+      "email": "max_krasnov@example.com",
+      "comment": "",
+      "owner": 2
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 3,
+    "fields": {
+      "first_name": "Василий",
+      "last_name": "Пупкин",
+      "surname": "Анатольевич",
+      "email": "vasili_pup@example.com",
+      "comment": "",
+      "owner": 2
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 4,
+    "fields": {
+      "first_name": "Ульяна",
+      "last_name": "Алексеева",
+      "surname": "Максимовна",
+      "email": "uliana_alex@example.com",
+      "comment": "",
+      "owner": 2
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 5,
+    "fields": {
+      "first_name": "Анатолий",
+      "last_name": "Андреев",
+      "surname": "Константинович",
+      "email": "anatolii_andr@example.com",
+      "comment": "",
+      "owner": 2
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 6,
+    "fields": {
+      "first_name": "Дарья",
+      "last_name": "Андрианова",
+      "surname": "Андреевна",
+      "email": "dariya_95@example.com",
+      "comment": "",
+      "owner": 2
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 7,
+    "fields": {
+      "first_name": "Александр",
+      "last_name": "Баженов",
+      "surname": "Игоревич",
+      "email": "alex_bag84@example.com",
+      "comment": "",
+      "owner": 2
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 8,
+    "fields": {
+      "first_name": "Вероника",
+      "last_name": "Баранова",
+      "surname": "Ильинична",
+      "email": "verona_bar@example.com",
+      "comment": "",
+      "owner": 3
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 9,
+    "fields": {
+      "first_name": "Владислав",
+      "last_name": "Бобров",
+      "surname": "Никитич",
+      "email": "vlad_bobr1997@example.com",
+      "comment": "",
+      "owner": 3
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 10,
+    "fields": {
+      "first_name": "Антонина",
+      "last_name": "Васильева",
+      "surname": "Марковна",
+      "email": "antonina_vasil98@example.com",
+      "comment": "",
+      "owner": 3
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 11,
+    "fields": {
+      "first_name": "Лев",
+      "last_name": "Вишневский",
+      "surname": "Кириллович",
+      "email": "lev_vischnew97@example.com",
+      "comment": "",
+      "owner": 4
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 12,
+    "fields": {
+      "first_name": "Денис",
+      "last_name": "Волков",
+      "surname": "Волков",
+      "email": "den_volk95@example.com",
+      "comment": "",
+      "owner": 4
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 13,
+    "fields": {
+      "first_name": "Иван",
+      "last_name": "Давыдов",
+      "surname": "Маркович",
+      "email": "ivan_davmark@example.com",
+      "comment": "",
+      "owner": 4
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 14,
+    "fields": {
+      "first_name": "Адам",
+      "last_name": "Евсеев",
+      "surname": "Семёнович",
+      "email": "adam_evsev2319@example.com",
+      "comment": "",
+      "owner": 4
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 15,
+    "fields": {
+      "first_name": "Даниил",
+      "last_name": "Егоров",
+      "surname": "Егоров",
+      "email": "daniil_egorov23@example.com",
+      "comment": "",
+      "owner": 4
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 16,
+    "fields": {
+      "first_name": "Ульяна",
+      "last_name": "Алексеева",
+      "surname": "Максимовна",
+      "email": "uliana_alex@example.com",
+      "comment": "",
+      "owner": 3
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 17,
+    "fields": {
+      "first_name": "Ульяна",
+      "last_name": "Алексеева",
+      "surname": "Максимовна",
+      "email": "uliana_alex@example.com",
+      "comment": "",
+      "owner": 4
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 18,
+    "fields": {
+      "first_name": "Владислав",
+      "last_name": "Бобров",
+      "surname": "Никитич",
+      "email": "vlad_bobr1997@example.com",
+      "comment": "",
+      "owner": 2
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 19,
+    "fields": {
+      "first_name": "Владислав",
+      "last_name": "Бобров",
+      "surname": "Никитич",
+      "email": "vlad_bobr1997@example.com",
+      "comment": "",
+      "owner": 4
+    }
+  }
+]

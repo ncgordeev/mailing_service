@@ -131,9 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'apps', 'main', 'static'),
-)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "apps", "main", "static"),)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -161,3 +159,13 @@ LOGOUT_REDIRECT_URL = "/"
 LOGIN_URL = "/users/login/"
 
 CRONJOBS = [("*/1 * * * *", "apps.crontab.cron.scheduled_mailing")]
+
+CACHE_ENABLED = os.getenv("CACHE_ENABLED", "False") == "True"
+
+if CACHE_ENABLED:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": os.getenv("REDIS_HOST"),
+        }
+    }

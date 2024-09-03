@@ -10,4 +10,4 @@ def is_manager(user):
 
 @register.filter
 def is_content_manager(user):
-    return user.groups.filter(name='content manager').exists()
+    return user.groups.filter(name="content manager").exists()

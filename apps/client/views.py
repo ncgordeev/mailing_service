@@ -50,7 +50,7 @@ class ClientCreateView(LoginRequiredMixin, CreateView):
 
     def get_form_kwargs(self):
         data = super().get_form_kwargs()
-        data['owner'] = self.request.user
+        data["owner"] = self.request.user
         return data
 
 
@@ -66,7 +66,7 @@ class ClientUpdateView(LoginRequiredMixin, AccessCheckMixin, UpdateView):
 
     def get_form_kwargs(self):
         data = super().get_form_kwargs()
-        data['owner'] = self.request.user
+        data["owner"] = self.request.user
         return data
 
 

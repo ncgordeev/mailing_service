@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 from pytils.translit import slugify
 
-from apps.main.utils import NULLABLE
+NULLABLE = {"blank": True, "null": True}
 
 
 class Article(models.Model):
